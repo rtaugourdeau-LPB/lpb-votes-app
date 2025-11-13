@@ -29,14 +29,6 @@ PG_SSLMODE  = st.secrets["BO"].get("sslmode", "require")
 
 LPB_PROJECT_URL = "https://app.lapremierebrique.fr/fr/projects/{project_id}"
 
-# app.py — LPB — Croisement Votes Airtable ↔ Souscriptions BO (version améliorée, sans section camembert et suivantes)
-# =================================================================================
-# Dépendances :
-#   pip install streamlit pandas sqlalchemy psycopg2-binary requests rapidfuzz unidecode
-# Lancer :
-#   streamlit run app.py
-# =================================================================================
-
 @st.cache_data(show_spinner=False)
 def get_view_last_update(base_id: str, table_id: str, view_name: str) -> datetime:
     """Renvoie la date du record le plus récent dans une vue Airtable."""
@@ -54,21 +46,6 @@ def get_view_last_update(base_id: str, table_id: str, view_name: str) -> datetim
     except Exception as e:
         st.warning(f"⏱️ Erreur lors de la récupération de la date pour '{view_name}': {e}")
         return datetime.min
-
-# =======================
-# 🔐 CONFIG — utilisez st.secrets
-#   Créez .streamlit/secrets.toml avec :
-#   [airtable]
-#   token = "..."
-#   base_id = "..."
-#   [BO]
-#   host = "..."
-#   port = "5432"
-#   db = "..."
-#   user = "..."
-#   password = "..."
-#   sslmode = "require"
-# =======================
 
 # =======================
 # Utils HTTP / strings
@@ -810,7 +787,6 @@ st.download_button(
     mime="text/csv",
 )
 
-# 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
 
 
 
