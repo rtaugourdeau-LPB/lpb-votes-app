@@ -11,7 +11,6 @@ from unidecode import unidecode
 try:
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots()
-    ...
 except Exception as e:
     st.info(f"Graphique non disponible : {e}")
 
@@ -815,6 +814,7 @@ st.download_button(
 )
 
 # 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
+
 
 
 
