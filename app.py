@@ -1,6 +1,7 @@
 import re
 import time
 from typing import Dict, List, Tuple, Optional
+from datetime import datetime
 
 import streamlit as st
 import pandas as pd
@@ -8,16 +9,10 @@ import requests
 from sqlalchemy import create_engine, text
 from rapidfuzz import process, fuzz
 from unidecode import unidecode
-try:
-    import matplotlib.pyplot as plt
-    fig, ax = plt.subplots()
-except Exception as e:
-    st.info(f"Graphique non disponible : {e}")
 
-from datetime import datetime
-import streamlit as st
+st.set_page_config(page_title="LPB — Votes ↔ Souscriptions (match & nettoyage)", layout="wide")
 
-# --- Secrets (from Streamlit Cloud) ---
+# --- Secrets ---
 AIRTABLE_TOKEN   = st.secrets["airtable"]["token"]
 AIRTABLE_BASE_ID = st.secrets["airtable"]["base_id"]
 AIR_H = {"Authorization": f"Bearer {AIRTABLE_TOKEN}"}
@@ -29,7 +24,6 @@ PG_USER     = st.secrets["BO"]["user"]
 PG_PASSWORD = st.secrets["BO"]["password"]
 PG_SSLMODE  = st.secrets["BO"].get("sslmode", "require")
 
-# URL publique projet LPB
 LPB_PROJECT_URL = "https://app.lapremierebrique.fr/fr/projects/{project_id}"
 
 # app.py — LPB — Croisement Votes Airtable ↔ Souscriptions BO (version améliorée, sans section camembert et suivantes)
@@ -814,6 +808,7 @@ st.download_button(
 )
 
 # 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
+
 
 
 
