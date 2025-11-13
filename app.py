@@ -1,15 +1,3 @@
-import re
-import time
-from typing import Dict, List, Tuple, Optional
-from datetime import datetime
-
-import streamlit as st
-import pandas as pd
-import requests
-from sqlalchemy import create_engine, text
-from rapidfuzz import process, fuzz
-from unidecode import unidecode
-
 import re, time
 from typing import Dict, List, Tuple, Optional
 from datetime import datetime
@@ -819,6 +807,7 @@ st.download_button(
 )
 
 # 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
+
 
 
 
