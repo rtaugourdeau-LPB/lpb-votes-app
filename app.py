@@ -8,6 +8,7 @@ import requests
 from sqlalchemy import create_engine, text
 from rapidfuzz import process, fuzz
 from unidecode import unidecode
+import matplotlib
 
 from datetime import datetime
 import streamlit as st
@@ -809,5 +810,6 @@ st.download_button(
 )
 
 # 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
+
 
 
