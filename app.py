@@ -1,3 +1,17 @@
+import re
+import time
+from typing import Dict, List, Tuple, Optional
+
+import streamlit as st
+import pandas as pd
+import requests
+from sqlalchemy import create_engine, text
+from rapidfuzz import process, fuzz
+from unidecode import unidecode
+
+from datetime import datetime
+import streamlit as st
+
 AIRTABLE_TOKEN = st.secrets["airtable"]["token"]
 AIRTABLE_BASE_ID = st.secrets["airtable"]["base_id"]
 
@@ -18,20 +32,6 @@ LPB_PROJECT_URL = "https://app.lapremierebrique.fr/fr/projects/{project_id}"
 # Lancer :
 #   streamlit run app.py
 # =================================================================================
-
-import re
-import time
-from typing import Dict, List, Tuple, Optional
-
-import streamlit as st
-import pandas as pd
-import requests
-from sqlalchemy import create_engine, text
-from rapidfuzz import process, fuzz
-from unidecode import unidecode
-
-from datetime import datetime
-import streamlit as st
 
 @st.cache_data(show_spinner=False)
 def get_view_last_update(base_id: str, table_id: str, view_name: str) -> datetime:
@@ -807,3 +807,4 @@ st.download_button(
 )
 
 # 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
+
