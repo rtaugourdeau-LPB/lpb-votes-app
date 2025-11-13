@@ -8,7 +8,12 @@ import requests
 from sqlalchemy import create_engine, text
 from rapidfuzz import process, fuzz
 from unidecode import unidecode
-import matplotlib
+try:
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots()
+    ...
+except Exception as e:
+    st.info(f"Graphique non disponible : {e}")
 
 from datetime import datetime
 import streamlit as st
@@ -810,6 +815,7 @@ st.download_button(
 )
 
 # 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
+
 
 
 
