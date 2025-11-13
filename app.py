@@ -9,6 +9,20 @@ import requests
 from sqlalchemy import create_engine, text
 from rapidfuzz import process, fuzz
 from unidecode import unidecode
+import streamlit as st
+
+if "auth_ok" not in st.session_state:
+    st.session_state.auth_ok = False
+
+if not st.session_state.auth_ok:
+    pwd = st.text_input("Mot de passe", type="password")
+    if st.button("Entrer"):
+        if pwd == st.secrets["auth"]["password"]:
+            st.session_state.auth_ok = True
+        else:
+            st.error("Mot de passe incorrect.")
+    st.stop()
+
 
 # --- Secrets ---
 AIRTABLE_TOKEN   = st.secrets["airtable"]["token"]
@@ -806,6 +820,7 @@ st.download_button(
 )
 
 # 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
+
 
 
 
