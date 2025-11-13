@@ -4,15 +4,6 @@ from typing import Dict, List, Tuple, Optional
 from datetime import datetime
 
 import streamlit as st
-import pandas as pd
-import requests
-from sqlalchemy import create_engine, text
-from rapidfuzz import process, fuzz
-from unidecode import unidecode
-import streamlit as st
-
-if "auth_ok" not in st.session_state:
-    st.session_state.auth_ok = False
 
 if not st.session_state.auth_ok:
     pwd = st.text_input("Mot de passe", type="password")
@@ -22,6 +13,16 @@ if not st.session_state.auth_ok:
         else:
             st.error("Mot de passe incorrect.")
     st.stop()
+    
+import pandas as pd
+import requests
+from sqlalchemy import create_engine, text
+from rapidfuzz import process, fuzz
+from unidecode import unidecode
+import streamlit as st
+
+if "auth_ok" not in st.session_state:
+    st.session_state.auth_ok = False
 
 
 # --- Secrets ---
@@ -820,6 +821,7 @@ st.download_button(
 )
 
 # 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
+
 
 
 
