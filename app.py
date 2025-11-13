@@ -3,17 +3,7 @@ import time
 from typing import Dict, List, Tuple, Optional
 from datetime import datetime
 
-import streamlit as st
-
-if not st.session_state.auth_ok:
-    pwd = st.text_input("Mot de passe", type="password")
-    if st.button("Entrer"):
-        if pwd == st.secrets["auth"]["password"]:
-            st.session_state.auth_ok = True
-        else:
-            st.error("Mot de passe incorrect.")
-    st.stop()
-    
+import streamlit as st    
 import pandas as pd
 import requests
 from sqlalchemy import create_engine, text
@@ -821,6 +811,7 @@ st.download_button(
 )
 
 # 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
+
 
 
 
