@@ -12,8 +12,10 @@ from unidecode import unidecode
 from datetime import datetime
 import streamlit as st
 
-AIRTABLE_TOKEN = st.secrets["airtable"]["token"]
+# --- Secrets (from Streamlit Cloud) ---
+AIRTABLE_TOKEN   = st.secrets["airtable"]["token"]
 AIRTABLE_BASE_ID = st.secrets["airtable"]["base_id"]
+AIR_H = {"Authorization": f"Bearer {AIRTABLE_TOKEN}"}
 
 PG_HOST     = st.secrets["BO"]["host"]
 PG_PORT     = st.secrets["BO"]["port"]
@@ -22,7 +24,7 @@ PG_USER     = st.secrets["BO"]["user"]
 PG_PASSWORD = st.secrets["BO"]["password"]
 PG_SSLMODE  = st.secrets["BO"].get("sslmode", "require")
 
-# URL publique projet LPB (pour liens)
+# URL publique projet LPB
 LPB_PROJECT_URL = "https://app.lapremierebrique.fr/fr/projects/{project_id}"
 
 # app.py — LPB — Croisement Votes Airtable ↔ Souscriptions BO (version améliorée, sans section camembert et suivantes)
@@ -807,4 +809,5 @@ st.download_button(
 )
 
 # 🛑 Fin du script : supprimé à partir de '🥧 Répartition de la préparation — Table finale' selon la demande.
+
 
