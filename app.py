@@ -313,7 +313,7 @@ def pick_project_id_from_airtable(
     cands_unique.sort(key=lambda x: (-x[2], x[1]))
 
     options = [f"{pid} — {disp} (score {score:.1f})" for pid, disp, score in cands_unique] or ["Saisir manuellement"]
-    choice = st.selectbox("Confirme le projet exact BO (5 les plus probables) :", options, index=0)
+    choice = st.selectbox("Confirme le projet exact BO (les plus probables) :", options, index=0)
 
     if choice == "Saisir manuellement":
         pid = st.number_input("ID projet LPB :", min_value=1, step=1)
@@ -786,6 +786,7 @@ st.download_button(
     file_name=f"votes_x_subs_project_{project_id}_final.csv",
     mime="text/csv",
 )
+
 
 
 
