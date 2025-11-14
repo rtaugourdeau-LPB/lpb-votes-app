@@ -289,7 +289,6 @@ def pick_project_id_from_airtable(
         return m.group(1).strip() if m else txt.strip()
 
     if candidate_label is None:
-        # si le view_name ressemble à 'Vue viwXXXX', on préfère table_name
         looks_like_view_id = bool(re.match(r"^Vue\s+viw[A-Za-z0-9]+$", str(view_name)))
         if table_name and (looks_like_view_id or "Projet" in str(table_name)):
             candidate_label = extract_from_title(str(table_name))
@@ -786,6 +785,7 @@ st.download_button(
     file_name=f"votes_x_subs_project_{project_id}_final.csv",
     mime="text/csv",
 )
+
 
 
 
