@@ -9,23 +9,24 @@ import requests
 from sqlalchemy import create_engine, text
 from rapidfuzz import process, fuzz
 from unidecode import unidecode
-
-# =======================
-# 🔐 CONFIG EN BRUT
-# =======================
 import os
 
-AIRTABLE_TOKEN   = st.secrets["AIRTABLE_TOKEN"]
-AIRTABLE_BASE_ID = st.secrets["AIRTABLE_BASE_ID"]
+# =======================
+# 🔐 CONFIG VIA st.secrets
+# =======================
 
-PG_HOST     = st.secrets["PG_HOST"]
-PG_PORT     = st.secrets["PG_PORT"]
-PG_DB       = st.secrets["PG_DB"]
-PG_USER     = st.secrets["PG_USER"]
-PG_PASSWORD = st.secrets["PG_PASSWORD"]
-PG_SSLMODE  = st.secrets.get("PG_SSLMODE", "require")
-
+# ===== Airtable =====
+AIRTABLE_TOKEN   = st.secrets["airtable"]["token"]
+AIRTABLE_BASE_ID = st.secrets["airtable"]["base_id"]
 AIR_H = {"Authorization": f"Bearer {AIRTABLE_TOKEN}"} if AIRTABLE_TOKEN else None
+
+# ===== Postgres BO =====
+PG_HOST     = st.secrets["BO"]["host"]
+PG_PORT     = st.secrets["BO"]["port"]
+PG_DB       = st.secrets["BO"]["db"]
+PG_USER     = st.secrets["BO"]["user"]
+PG_PASSWORD = st.secrets["BO"]["password"]
+PG_SSLMODE  = st.secrets["BO"].get("sslmode", "require")
 
 # URL publique projet LPB
 LPB_PROJECT_URL = "https://app.lapremierebrique.fr/fr/projects/{project_id}"
@@ -1016,3 +1017,4 @@ st.download_button(
     file_name=f"votes_x_subs_project_{project_id}_final.csv",
     mime="text/csv",
 )
+
